@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>KZK Notepad</title>
+		<script src="layout.js"></script>
+    </head>
+    <style>
+        h1 {
+            text-align: center;
+        }
+        /* Add a black background color to the top navigation */
+        .navigation {
+            align-self: center;
+            background-color: #333;
+        }
+
+        /* Style the links inside the navigation bar */
+        .navigation a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .navigation a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .navigation a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .finder {
+            padding-top: 10px;
+            font-size: 17px;
+            -moz-border-radius: 6px;
+            -webkit-border-radius: 6px;
+            background-color: #f0f7fb;
+            background-position: 9px 0px;
+            background-repeat: no-repeat;
+            border: solid 1px #3498db;
+            border-radius: 6px;
+            line-height: 18px;
+            overflow: hidden;
+            padding: 15px 60px;
+        }
+
+        div {
+            font-size: 17px;
+        }
+
+        textarea {
+            width: 98%;
+            font-size: 17px;
+        }
+
+        .block {
+            background-color: #f0f7fb; 
+            border-left: solid 4px #3498db; 
+            line-height: 18px; 
+            overflow: hidden; 
+            padding: 12px;
+        }
+
+        .inline-block {
+            background-color: #f0f7fb;  
+            align: left;
+            white-space: pre;
+            overflow: hidden;
+
+            height: auto;
+            line-height: 18px;
+            clip-path: inset(0% 0% 0% 0%);
+
+            transition: height 0.3s ease-in-out;
+            transition: line-height 0.3s ease-in-out;
+            transition: clip-path 0.4s ease-in-out;
+        }
+
+        .hidden {
+            line-height:0px;
+            height: 0px;
+            clip-path: inset(0% 0% 100% 0%);
+        }
+
+        .block-transparent {
+            background-color: #ffffff; 
+            border-left: solid 4px #ffffff; 
+            line-height: 18px; 
+            overflow: hidden; 
+            padding: 12px;
+        }
+
+        [hint]:before {            
+            position : absolute;
+            content : attr(hint);
+            opacity : 0.1;
+        }
+
+        [hint]:hover:before {        
+            opacity : 0;
+        }
+
+        a.btn {
+            display: inline-block;
+            padding: 0.35em 1.2em;
+            border :0.1em solid #000000;
+            margin-left: 12px;
+            border-radius: 0.12em;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto',sans-serif;
+            font-weight: 300;
+            color:#000000;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        a.btn:hover{
+            color: #FFFFFF;
+            background-color: #4CAF50;
+        }
+
+        .submenu-parent {
+            display: inline-block;
+            position: relative;
+        }
+
+        .submenu-child {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 400%;
+            z-index: 10;
+            -webkit-transition: 0.5s ease-in-out;
+            -moz-transition: 0.5s ease-in-out;
+            -o-transition: 0.5s ease-in-out;
+            transition: 0.5s ease-in-out;
+
+            -webkit-transform: scaleY(0);
+            -ms-transform: scaleY(0);
+            transform: scaleY(0);
+            -webkit-transform-origin: 0 0;
+            -ms-transform-origin: 0 0;
+            transform-origin: 0 0;
+            background: #333;
+        }
+
+        li:hover .submenu-child {
+            -webkit-transform: scaleY(1);
+            -ms-transform: scaleY(1);
+            transform: scaleY(1);
+        }
+        
+    </style>
+    <body>
+        <div class="navigation">
+            <a id="find">Поиск по определениям</a>
+            <a id="create">Создание нового определения</a>
+            <a id="list">Просмотр существующих определений</a>
+            
+            <li class="submenu-parent"><a>⚙</a>
+                <ul class="submenu-child">
+                    <li><a style="padding: 0px; margin-top: 5px;" id="export">Экспорт определений</a></li>
+                    <li><a style="padding: 0px;" id="import">Импорт определений</a></li>
+                </ul>
+            </li>
+         </div>
+
+         <div class="loaded-page"></div>
+    </body>
+</html>
